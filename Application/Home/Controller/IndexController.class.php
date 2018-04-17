@@ -3,7 +3,20 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
-      /*  $this->show('<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} body{ background: #fff; font-family: "微软雅黑"; color: #333;font-size:24px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.8em; font-size: 36px } a,a:hover{color:blue;}</style><div style="padding: 24px 48px;"> <h1>:)</h1><p>欢迎使用 <b>ThinkPHP</b>！</p><br/>版本 V{$Think.version}</div><script type="text/javascript" src="http://ad.topthink.com/Public/static/client.js"></script><thinkad id="ad_55e75dfae343f5a1"></thinkad><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>','utf-8');*/
-      echo '老司机放假了哇！什么时候来常州玩玩啊';
-    }
+        $signature = $_GET["signature"];//从用户端获取签名赋予变量signature
+		$timestamp = $_GET["timestamp"];//从用户端获取时间戳赋予变量timestamp
+		$nonce = $_GET["nonce"];    //从用户端获取随机数赋予变量nonce
+
+		$token ='YoonPer';//将常量token赋予变量token
+		$tmpArr = array($token, $timestamp, $nonce);//简历数组变量tmpArr
+		sort($tmpArr, SORT_STRING);//新建排序
+		$tmpStr = implode( $tmpArr );//字典排序
+		$tmpStr = sha1( $tmpStr );//shal加密
+		//tmpStr与signature值相同，返回真，否则返回假
+		if( $tmpStr == $signature ){
+		echo $_GET["echostr"];
+		}else{
+		return false;
+		}
+	}
 }
