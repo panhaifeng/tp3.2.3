@@ -254,6 +254,19 @@ function T($template='',$layer=''){
     return $baseUrl.($theme?$theme.'/':'').$file.C('TMPL_TEMPLATE_SUFFIX');
 }
 
+//打印输出
+function dump2file($vars, $label = '', $return = false)
+{
+    $m_time = microtime();
+    list($t1, $t2) = explode(' ', $m_time);
+    $t1 = $t1*1000000;
+    $t2 = date('Y-m-d H:i:s',$t2);
+    $flag = $t2.':'.$t1;
+    $import_data = print_r($vars,1);
+    $import_data = "================".$flag."================\r\n".$import_data."\r\n";
+    file_put_contents(dirname(THINK_PATH).'/Public/debug_log.txt', $import_data,FILE_APPEND);
+    return null;
+}
 /**
  * 获取输入参数 支持过滤和默认值
  * 使用方法:

@@ -21,7 +21,7 @@ class IndexController extends Controller {
 			}*/
          $strP = file_get_contents("php://input");
          $postObj = simplexml_load_string($strP, 'SimpleXMLElement', LIBXML_NOCDATA);
-         
+         dump2file(1);
 	}
 
 
