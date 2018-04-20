@@ -4,7 +4,7 @@ use Think\Controller;
 class IndexController extends Controller {
     public function index(){
 
-	       /* $signature = $_GET["signature"];//从用户端获取签名赋予变量signature
+	        $signature = $_GET["signature"];//从用户端获取签名赋予变量signature
 			$timestamp = $_GET["timestamp"];//从用户端获取时间戳赋予变量timestamp
 			$nonce = $_GET["nonce"];    //从用户端获取随机数赋予变量nonce
 
@@ -18,10 +18,10 @@ class IndexController extends Controller {
 			echo $_GET["echostr"];
 			}else{
 			return false;
-			}*/
-         $strP = file_get_contents("php://input");
+			}
+         /*$strP = file_get_contents("php://input");
          $postObj = simplexml_load_string($strP, 'SimpleXMLElement', LIBXML_NOCDATA);
-         dump2file(1);
+         dump2file(1);*/
 	}
 
 
