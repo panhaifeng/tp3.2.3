@@ -4,16 +4,8 @@ use Think\Controller;
 /*$wechatObj = new IndexController();
 $wechatObj->responseMsg();*/
 class IndexController extends Controller {
-
-	function __construct(){
-		$type = $_SERVER['REQUEST_METHOD'];
-		if($type=='POST'){
-           $this->responseMsg();
-		}else if($type=='GET'){
-           $this->index(); 
-		}
-	}
     public function index(){
+    	   $type = $_SERVER['REQUEST_METHOD'];
            if(isset($_GET['signature'])){
 	       	    $signature = $_GET["signature"];//从用户端获取签名赋予变量signature11
 				$timestamp = $_GET["timestamp"];//从用户端获取时间戳赋予变量timestamp
@@ -30,8 +22,10 @@ class IndexController extends Controller {
 				}else{
 				return false;
 				}
-           }
-	        
+           }     
+		if($type=='POST'){
+           $this->responseMsg();
+		}
          /*$strP = file_get_contents("php://input");
          $postObj = simplexml_load_string($strP, 'SimpleXMLElement', LIBXML_NOCDATA);
          dump2file(1);*/
