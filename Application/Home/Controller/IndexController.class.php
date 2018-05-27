@@ -2,12 +2,12 @@
 namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
-    public function index()
-    {
-        $this->show('This is for Wechat','utf-8');
-    }
+    // public function index()
+    // {
+    //     $this->show('This is for Wechat','utf-8');
+    // }
     //用户首次配置开发环境
-    public function echoStr()
+    public function index()
     {
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
