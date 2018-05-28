@@ -1,6 +1,8 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+$weixinObj = new IndexController();
+$weixinObj->reposeMsg();
 class IndexController extends Controller {
     // public function index()
     // {
@@ -29,6 +31,7 @@ class IndexController extends Controller {
     //回复消息
     public function reposeMsg()
     {
+       // dump(3234);die;
         //1.接受数据
         $postArr = $GLOBALS['HTTP_RAW_POST_DATA'];  //接受xml数据
         //2.处理消息类型,推送消息
